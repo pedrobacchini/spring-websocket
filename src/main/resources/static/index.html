@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" onclick="conectar(); return false;" value="Conectar"/>
+<br/>
+<textarea id="resultado" cols="80" rows="5"></textarea>
+
+
+<script type="text/javascript">
+    var websocket
+    function conectar() {
+        websocket = new WebSocket("ws://localhost:8080/websocket");
+
+        websocket.onmessage = function(message) {
+            document.getElementById("resultado").value = message.data;
+        };
+    }
+</script>
+</body>
+</html>
